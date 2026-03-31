@@ -7,7 +7,7 @@ A console-based student management system for a University, built with Python. I
 ##  Project Structure
 
 ```
-gym_management_system/
+student_system/
 │
 ├── main.py                  # Entry point — runs the main menu loop
 │
@@ -15,7 +15,7 @@ gym_management_system/
 │   └── list_students.csv          # Auto-generated file where client data is stored
 │
 ├── models/
-│   └── students.py            # Client class (data model)
+│   └── students.py            # student class (data model)
 │
 └── services/
     ├── students_service.py    # Business logic — CRUD operations
@@ -48,11 +48,11 @@ The program will automatically load any existing client data from the CSV file o
 
 | Option | Feature               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 1      | Register new Student  | Adds a new client with all their information     |
-| 2      | List all Student      | Displays a formatted table of all clients        |
-| 3      | Search Student        | Finds a client by ID or name                     |
-| 4      | Update Student        | Edits an existing client's information           |
-| 5      | Delete Student        | Removes a client after confirmation              |
+| 1      | Register new Student  | Adds a new student with all their information    |
+| 2      | List all Student      | Displays a formatted table of all student        |
+| 3      | Search Student        | Finds a student by ID or name                    |
+| 4      | Update Student        | Edits an existing students information           |
+| 5      | Delete Student        | Removes a student after confirmation             |
 | 7      | Exit                  | Closes the program                               |
 
 ---
@@ -64,9 +64,9 @@ Each client record contains the following fields:
 | Field    | Type    | Description                                                    |
 |----------|---------|----------------------------------------------------------------|
 | `id`     | Integer | Unique auto-generated identifier                               |
-| `name`   | String  | Full name of the client                                        |
-| `age`    | Integer | Age of the client (1–120)                                      |
-| `program`| String  | Membership plan: `database`, `frontend`, `backend`, `fullstack`|
+| `name`   | String  | Full name of the student                                       |
+| `age`    | Integer | Age of the student (1–120)                                      |
+| `program`| String  | Program : `database`, `frontend`, `backend`, `fullstack`|
 | `status` | String  | Current status: `active` or `inactive`                         |
 
 ---

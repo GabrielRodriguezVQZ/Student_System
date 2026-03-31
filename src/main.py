@@ -21,7 +21,7 @@ def main():
     print("Student System")
     print("")
 
-    # Load existing clients from CSV on startup
+    # Load existing students from CSV on startup
     students = load_students_csv()
     print(f"{len(students)} Students(s) loaded.\n")
 

@@ -7,7 +7,7 @@ COLUMNS = ["id", "name", "age", "program", "status"]
 
 
 def save_students_csv(students):
-    """Saves the full list of Client objects to the CSV file."""
+    """Saves the full list of Student objects to the CSV file."""
     file = open(CSV_FILE, "w", newline="", encoding="utf-8")
     writer = csv.DictWriter(file, fieldnames=COLUMNS)
     writer.writeheader()
@@ -18,7 +18,7 @@ def save_students_csv(students):
 
 
 def load_students_csv():
-    """Loads clients from the CSV file and returns a list of Client objects."""
+    """Loads students from the CSV file and returns a list of students objects."""
     students = []
 
     if not os.path.exists(CSV_FILE):
