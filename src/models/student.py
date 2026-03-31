@@ -6,7 +6,7 @@ class Student:
         self.id = id
         self.name = name
         self.age = age
-        self.program = program        # monthly / quarterly / annual
+        self.program = program        # centurion / 
         self.status = status    # active / inactive
 
     def to_dict(self):

@@ -1,7 +1,7 @@
 from models.student import *
 from services.csv_services import *
 
-VALID_PLANS = ["monthly", "quarterly", "annual"]
+VALID_PROGRAM = ["Centurion", "", ""]
 VALID_STATUSES = ["active", "inactive"]
 
 def generate_id(students):
@@ -22,24 +22,24 @@ def add_student(students):
     # Name
     name = input("Student name: ").strip()
     if name == "":
-        print("❌ Name cannot be empty.")
+        print(" Name cannot be empty.")
         return
 
     # Age
     try:
         age = int(input("Age: "))
         if age <= 0 or age > 120:
-            print("❌ Invalid age.")
+            print(" Invalid age.")
             return
     except ValueError:
-        print("❌ Age must be a number.")
+        print(" Age must be a number.")
         return
 
     # Plan
-    print(f"Available Program: {' / '.join(VALID_PLANS)}")
+    print(f"Available Program: {' / '.join(VALID_PROGRAM)}")
     program = input("Program type: ").strip().lower()
-    if program not in VALID_PLANS:
-        print(f"❌ Invalid program. Choose from: {', '.join(VALID_PLANS)}")
+    if program not in VALID_PROGRAM:
+        print(f" Invalid program. Choose from: {', '.join(VALID_PROGRAM)}")
         return
 
     new_student = Student(
@@ -57,7 +57,7 @@ def add_student(students):
 
 def list_students(students):
     """Displays all registered student in a formatted table."""
-    print("\n📋 List")
+    print("\n List")
     print("-" * 60)
 
     if len(students) == 0:
@@ -66,15 +66,15 @@ def list_students(students):
 
     print(f"{'ID':<5} {'Name':<22} {'Age':<6} {'Program':<12} {'Status'}")
     print("-" * 60)
-    for client in students:
-        print(f"{client.id:<5} {client.name:<22} {client.age:<6} {client.program:<12} {client.status}")
+    for student in students:
+        print(f"{student.id:<5} {student.name:<22} {student.age:<6} {student.program:<12} {student.status}")
     print("-" * 60)
     print(f"Total: {len(students)} student(s)")
 
 
 def search_student(students):
     """Searches for Student by ID or name."""
-    print("\n🔍 search student")
+    print("\n search student")
     print("-" * 35)
     term = input("Enter ID or name to search: ").strip().lower()
 
@@ -92,7 +92,7 @@ def search_student(students):
         print(f"  ID     : {student.id}")
         print(f"  Name   : {student.name}")
         print(f"  Age    : {student.age}")
-        print(f"  program   : {student.program}")
+        print(f"  Program   : {student.program}")
         print(f"  Status : {student.status}")
         print("  " + "-" * 30)
 
@@ -133,10 +133,10 @@ def update_student(students):
         except ValueError:
             print("  Invalid age, keeping previous value.")
 
-    print(f"Available program: {' / '.join(VALID_PLANS)}")
+    print(f"Available program: {' / '.join(VALID_PROGRAM)}")
     new_program = input(f"Program [{found.program}]: ").strip().lower()
     if new_program != "":
-        if new_program in VALID_PLANS:
+        if new_program in VALID_PROGRAM:
             found.program = new_program
         else:
             print("  Invalid plan, keeping previous value.")
@@ -152,3 +152,30 @@ def update_student(students):
     save_students_csv(students)
     print(" Stuent updated successfully.")
 
+def delete_student(students):
+    """Deletes a client by ID after confirmation."""
+    print("\n  DELETE CLIENT")
+    print("-" * 35)
+
+    try:
+        delete_id = int(input("Client ID to delete: "))
+    except ValueError:
+        print(" ID must be a number.")
+        return
+    
+    found = None
+    for student in students:
+        if student.id == delete_id:
+            found = student
+            break
+
+    if found is None:
+        print("No student found with that ID.")
+
+    confirm = input(f"Delete '{found.name}'? (y/n): ").strip().lower()
+    if confirm == "y":
+        student.remove(found)
+        save_students_csv(students)
+        print("Student deleted successfully.")
+    else:
+        print("Operation cancelled.")

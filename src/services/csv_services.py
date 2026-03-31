@@ -14,10 +14,10 @@ def save_students_csv(students):
     file = open(CSV_FILE, "w", newline="", encoding="utf-8")
     writer = csv.DictWriter(file, fieldnames=COLUMNS)
     writer.writeheader()
-    for students in students:
-        writer.writerow(students.to_dict())
+    for student in students:
+        writer.writerow(student.to_dict())
     file.close()
-    print("✅ Data saved to CSV.")
+    print(" Data saved to CSV.")
 
 
 def load_students_csv():
@@ -30,8 +30,8 @@ def load_students_csv():
     file = open(CSV_FILE, "r", newline="", encoding="utf-8")
     reader = csv.DictReader(file)
     for row in reader:
-        students = students.from_dict(row)
-        students.append(students)
+        student = Student.from_dict(row)
+        students.append(student)
     file.close()
 
     return students
