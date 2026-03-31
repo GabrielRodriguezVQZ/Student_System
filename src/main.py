@@ -1,4 +1,4 @@
-from services.csv_services import load_students_csv
+from services.csv_services import *
 from services.student_services import (
     add_student,
     list_students,
@@ -23,7 +23,7 @@ def main():
 
     # Load existing clients from CSV on startup
     students = load_students_csv()
-    print(f"{len(students)} client(s) loaded.\n")
+    print(f"{len(students)} Students(s) loaded.\n")
 
     while True:
         show_menu()

@@ -1,7 +1,7 @@
 from models.student import *
 from services.csv_services import *
 
-VALID_PROGRAM = ["Centurion", "", ""]
+VALID_PROGRAM = ["database", "frontend", "backend","fullstack"]
 VALID_STATUSES = ["active", "inactive"]
 
 def generate_id(students):
@@ -174,7 +174,7 @@ def delete_student(students):
 
     confirm = input(f"Delete '{found.name}'? (y/n): ").strip().lower()
     if confirm == "y":
-        student.remove(found)
+        students.remove(found)
         save_students_csv(students)
         print("Student deleted successfully.")
     else:

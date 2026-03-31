@@ -1,11 +1,8 @@
-# services/csv_service.py
-# Handles all reading and writing to the CSV file
-
 import csv
 import os
 from models.student import Student
 
-CSV_FILE = "data/list_students.csv"
+CSV_FILE = "src/data/list_students.csv"
 COLUMNS = ["id", "name", "age", "program", "status"]
 
 
