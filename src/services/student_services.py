@@ -4,6 +4,8 @@ from services.csv_services import *
 VALID_PROGRAM = ["database", "frontend", "backend","fullstack"]
 VALID_STATUSES = ["active", "inactive"]
 
+#Generate student ID
+
 def generate_id(students):
     """Generates a unique ID based on the highest existing ID."""
     if len(students) == 0:
@@ -13,6 +15,8 @@ def generate_id(students):
         if student.id > highest_id:
             highest_id = student.id
     return highest_id + 1
+
+#Register student
 
 def add_student(students):
     """Asks the user for data and registers a new client."""
@@ -35,7 +39,7 @@ def add_student(students):
         print(" Age must be a number.")
         return
 
-    # Plan
+    # Program
     print(f"Available Program: {' / '.join(VALID_PROGRAM)}")
     program = input("Program type: ").strip().lower()
     if program not in VALID_PROGRAM:
@@ -54,6 +58,7 @@ def add_student(students):
     save_students_csv(students)
     print(f"Student '{name}' registered with ID {new_student.id}.")
 
+#Show list
 
 def list_students(students):
     """Displays all registered student in a formatted table."""
@@ -71,6 +76,7 @@ def list_students(students):
     print("-" * 60)
     print(f"Total: {len(students)} student(s)")
 
+#Search Student by the ID
 
 def search_student(students):
     """Searches for Student by ID or name."""
@@ -95,6 +101,8 @@ def search_student(students):
         print(f"  Program   : {student.program}")
         print(f"  Status : {student.status}")
         print("  " + "-" * 30)
+
+#Update Student information
 
 def update_student(students):
     print("\n  Update Student")
@@ -151,6 +159,8 @@ def update_student(students):
 
     save_students_csv(students)
     print(" Stuent updated successfully.")
+
+#Delete student
 
 def delete_student(students):
     """Deletes a client by ID after confirmation."""

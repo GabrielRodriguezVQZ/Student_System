@@ -1,3 +1,4 @@
+# Handles all reading and writing to the CSV file
 import csv
 import os
 from models.student import Student

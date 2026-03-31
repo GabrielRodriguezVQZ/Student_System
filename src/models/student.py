@@ -1,4 +1,4 @@
-
+# This file defines the Client class (the data model)
 class Student:
 
     def __init__(self, id, name, age, program, status="active"):
